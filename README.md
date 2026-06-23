@@ -10,10 +10,9 @@ A responsive React + TypeScript master-detail TODO app built with Vite. The app 
 - Runtime API validation with `io-ts`
 - Server-state management with TanStack Query
 - Optimistic TODO updates with rollback on failure
-- Typed routes and branded IDs for safer domain modeling
+- Typed routes for safer domain modeling
 - Responsive layout for desktop, tablet, and mobile
 - Unit tests with Vitest and React Testing Library
-- Prettier format-on-save workspace settings for VS Code
 
 ## Tech Stack
 
