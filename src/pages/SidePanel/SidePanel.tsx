@@ -5,11 +5,10 @@ import { Header } from '../../components/Header/Header';
 import { UsersList } from '../../components/UsersList/UsersList';
 import { useUsers } from '../../hooks/useUsers';
 import { useUserSelection } from '../../hooks/useUserSelection';
-import type { UserId } from '../../types/branded';
 import type { User } from '../../types/user';
 
 export interface SidePanelOutletContext {
-  selectedUserId: O.Option<UserId>;
+  selectedUserId: O.Option<number>;
   selectedUser: O.Option<User>;
 }
 

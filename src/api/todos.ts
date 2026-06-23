@@ -3,11 +3,10 @@ import { pipe } from 'fp-ts/function';
 import { fetcher } from '../dal/http';
 import { TodoResponse, TodosResponse, type Todo } from '../types/todo';
 import { TodoSorting } from '../utils/ord';
-import { UserId } from '../types/branded';
 
 const API_BASE_URL = 'https://jsonplaceholder.typicode.com';
 
-export const fetchTodosByUserId = async (userId: UserId): Promise<Todo[]> =>
+export const fetchTodosByUserId = async (userId: number): Promise<Todo[]> =>
   pipe(
     await fetcher(`${API_BASE_URL}/users/${userId}/todos`, TodosResponse),
     A.sort(TodoSorting.byId)

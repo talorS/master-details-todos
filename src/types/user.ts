@@ -1,16 +1,10 @@
 import * as t from 'io-ts';
 
-/**
- * io-ts codec for User Geo location
- */
 export const GeoCodec = t.type({
   lat: t.string,
   lng: t.string,
 });
 
-/**
- * io-ts codec for User Address
- */
 export const AddressCodec = t.type({
   street: t.string,
   suite: t.string,
@@ -19,19 +13,12 @@ export const AddressCodec = t.type({
   geo: GeoCodec,
 });
 
-/**
- * io-ts codec for User Company
- */
 export const CompanyCodec = t.type({
   name: t.string,
   catchPhrase: t.string,
   bs: t.string,
 });
 
-/**
- * io-ts codec for User
- * Validates the entire User structure at runtime
- */
 export const UserResponse = t.type({
   id: t.number,
   name: t.string,
@@ -43,20 +30,9 @@ export const UserResponse = t.type({
   company: CompanyCodec,
 });
 
-/**
- * io-ts codec for array of Users
- */
 export const UsersResponse = t.array(UserResponse);
 
-/**
- * TypeScript type derived from io-ts codec
- * This ensures perfect sync between runtime validation and compile-time types
- */
 export type User = t.TypeOf<typeof UserResponse>;
-
-/**
- * Individual nested types for convenience
- */
 export type UserAddress = t.TypeOf<typeof AddressCodec>;
 export type UserGeo = t.TypeOf<typeof GeoCodec>;
 export type UserCompany = t.TypeOf<typeof CompanyCodec>;

@@ -4,11 +4,10 @@ import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
 import type { Todo } from '../types/todo';
 import { fetchTodosByUserId, updateTodo } from '../api/todos';
-import { UserId } from '../types/branded';
 import { defaultQueryOptions } from '../config/queryClient';
 
 interface UseTodosOptions {
-  userId: O.Option<UserId>;
+  userId: O.Option<number>;
 }
 
 interface UseTodosReturn {

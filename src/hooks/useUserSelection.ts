@@ -1,16 +1,16 @@
 import { useMemo } from 'react';
 import * as O from 'fp-ts/Option';
 import { pipe } from 'fp-ts/function';
-import { UserId } from '../types/branded';
 import type { User } from '../types/user';
 import { useParams } from 'react-router-dom';
+import { parseFromString } from '../utils/parseFromString';
 
 interface UseUserSelectionProps {
   users: User[];
 }
 
 interface UseUserSelectionReturn {
-  selectedUserId: O.Option<UserId>;
+  selectedUserId: O.Option<number>;
   selectedUser: O.Option<User>;
 }
 
@@ -20,7 +20,7 @@ export function useUserSelection({
   const { userId } = useParams();
   const selectedUserId = pipe(
     O.fromNullable(userId),
-    O.chain(UserId.fromString)
+    O.chain(parseFromString)
   );
 
   const selectedUser = useMemo(
@@ -28,7 +28,7 @@ export function useUserSelection({
       pipe(
         selectedUserId,
         O.chain((id) =>
-          O.fromNullable(users.find((user) => user.id === UserId.unwrap(id)))
+          O.fromNullable(users.find((user) => user.id === id))
         )
       ),
     [selectedUserId, users]

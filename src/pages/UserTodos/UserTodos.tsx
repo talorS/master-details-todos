@@ -7,7 +7,6 @@ import { ErrorState } from '../../components/ErrorState/ErrorState';
 import { EmptyState } from '../../components/EmptyState/EmptyState';
 import { TodoListSkeleton } from '../../components/TodosListSkeleton/TodosListSkeleton';
 import { useTodos } from '../../hooks/useTodos';
-import { UserId } from '../../types/branded';
 import type { SidePanelOutletContext } from '../SidePanel/SidePanel';
 
 export function UserTodosPage() {
@@ -45,7 +44,7 @@ export function UserTodosPage() {
             {pipe(
               selectedUser,
               O.map((user) => user.name),
-              O.getOrElse(() => `User #${UserId.unwrap(userId)}`)
+              O.getOrElse(() => `User #${userId}`)
             )}
           </h2>
           <TodosList todos={todos} onToggleTodo={toggleTodo} />
