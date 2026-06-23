@@ -1,0 +1,7 @@
+.emptyTodos {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: var(--color-text-secondary);
+  text-align: center;
+}

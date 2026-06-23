@@ -1,0 +1,121 @@
+.container {
+  width: min(100%, 1400px);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  min-height: 100vh;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(0, 3fr);
+  gap: var(--spacing-xl);
+  height: calc(100vh - 120px);
+  min-height: 600px;
+  min-width: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  overflow-y: auto;
+  height: 100%;
+  min-width: 0;
+}
+
+.users {
+  padding-right: var(--spacing-sm);
+}
+
+.users::-webkit-scrollbar {
+  width: 8px;
+}
+
+.users::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.users::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.users::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+.todos {
+  padding-left: var(--spacing-sm);
+}
+
+.todos::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todos::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.todos::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.todos::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-border);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: var(--spacing-lg);
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 0;
+  }
+
+  .section {
+    height: auto;
+    overflow: visible;
+  }
+
+  .users,
+  .todos {
+    padding: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: var(--spacing-md);
+  }
+
+  .content {
+    gap: var(--spacing-lg);
+  }
+
+  .section {
+    gap: var(--spacing-md);
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+}
