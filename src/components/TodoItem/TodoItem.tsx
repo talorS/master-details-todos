@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './TodoItem.module.css';
 import type { Todo } from '../../types/todo';
 
@@ -12,7 +13,7 @@ export function TodoItem({ todo, onToggle }: TodoItemProps) {
   };
 
   return (
-    <div className={`${styles.item} ${todo.completed ? styles.completed : ''}`}>
+    <div className={clsx(styles.item, todo.completed && styles.completed)}>
       <input
         type="checkbox"
         checked={todo.completed}

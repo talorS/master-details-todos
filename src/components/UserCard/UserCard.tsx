@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './UserCard.module.css';
 import type { User } from '../../types/user';
 
@@ -9,7 +10,7 @@ interface UserCardProps {
 
 export function UserCard({ user, isSelected, onShowTodos }: UserCardProps) {
   return (
-    <div className={`${styles.card} ${isSelected ? styles.selected : ''}`}>
+    <div className={clsx(styles.card, isSelected && styles.selected)}>
       <div className={styles.content}>
         <h3 className={styles.name}>{user.name}</h3>
         <p className={styles.username}>@{user.username}</p>

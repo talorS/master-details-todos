@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './ErrorState.module.css';
 
 interface ErrorMessageProps {
@@ -14,7 +15,7 @@ export function ErrorState({
   className,
 }: ErrorMessageProps) {
   return (
-    <div className={`${styles.error} ${className || ''}`}>
+    <div className={clsx(styles.error, className)}>
       <div className={styles.content}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.message}>{errorMessage}</p>

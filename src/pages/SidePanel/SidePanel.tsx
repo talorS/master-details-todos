@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { Outlet } from 'react-router-dom';
 import * as O from 'fp-ts/Option';
 import styles from './SidePanel.module.css';
@@ -20,7 +21,7 @@ export function SidePanel() {
     <div className={styles.container}>
       <Header />
       <div className={styles.content}>
-        <section className={`${styles.section} ${styles.users}`}>
+        <section className={clsx(styles.section, styles.users)}>
           <h2 className={styles.sectionTitle}>Users</h2>
           <UsersList
             users={users}
@@ -29,7 +30,7 @@ export function SidePanel() {
             refetch={refetch}
           />
         </section>
-        <section className={`${styles.section} ${styles.todos}`}>
+        <section className={clsx(styles.section, styles.todos)}>
           <Outlet
             context={
               {

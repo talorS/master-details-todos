@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './EmptyState.module.css';
 
 interface EmptyStateProps {
@@ -7,7 +8,7 @@ interface EmptyStateProps {
 
 export function EmptyState({ message, className }: EmptyStateProps) {
   return (
-    <div className={`${styles.empty} ${className ?? ''}`}>
+    <div className={clsx(styles.empty, className)}>
       <p className={styles.message}>{message}</p>
     </div>
   );

@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import styles from './Skeleton.module.css';
 
 interface SkeletonProps {
@@ -23,7 +24,7 @@ export function Skeleton({
 
   return (
     <div
-      className={`${styles.skeleton} ${styles[variant]} ${className}`}
+      className={clsx(styles.skeleton, styles[variant], className)}
       style={style}
     />
   );
