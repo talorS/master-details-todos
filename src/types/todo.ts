@@ -7,6 +7,6 @@ export const TodoResponse = t.type({
   completed: t.boolean,
 });
 
-export const TodosResponse = t.array(TodoResponse);
+export const TodosResponse = t.readonlyArray(TodoResponse);
 
 export type Todo = t.TypeOf<typeof TodoResponse>;

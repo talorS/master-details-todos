@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import * as O from 'fp-ts/Option';
+import * as RA from 'fp-ts/ReadonlyArray';
 import { pipe } from 'fp-ts/function';
 import styles from './UsersList.module.css';
 import { UserCard } from '../UserCard/UserCard';
@@ -11,7 +12,7 @@ import { routes } from '../../config/routes';
 import { useUserSelection } from '../../hooks/useUserSelection';
 
 interface UserListProps {
-  users: User[];
+  users: ReadonlyArray<User>;
   isLoading: boolean;
   isError: boolean;
   refetch: () => void;
@@ -40,23 +41,28 @@ export function UsersList({
     );
   }
 
-  if (users.length === 0) {
+  if (RA.size(users) === 0) {
     return <EmptyState message="No users found" />;
   }
 
   return (
     <div className={styles.grid}>
-      {users.map((user: User) => (
-        <UserCard
-          key={user.id}
-          user={user}
-          isSelected={pipe(
-            selectedUserId,
-            O.exists((id) => user.id === id)
-          )}
-          onShowTodos={() => navigate(routes.userTodos.to({ userId: user.id }))}
-        />
-      ))}
+      {pipe(
+        users,
+        RA.map((user) => (
+          <UserCard
+            key={user.id}
+            user={user}
+            isSelected={pipe(
+              selectedUserId,
+              O.exists((id) => user.id === id)
+            )}
+            onShowTodos={() =>
+              navigate(routes.userTodos.to({ userId: user.id }))
+            }
+          />
+        ))
+      )}
     </div>
   );
 }

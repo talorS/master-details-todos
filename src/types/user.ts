@@ -30,7 +30,7 @@ export const UserResponse = t.type({
   company: CompanyCodec,
 });
 
-export const UsersResponse = t.array(UserResponse);
+export const UsersResponse = t.readonlyArray(UserResponse);
 
 export type User = t.TypeOf<typeof UserResponse>;
 export type UserAddress = t.TypeOf<typeof AddressCodec>;

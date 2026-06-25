@@ -1,10 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-import { fetchUsers } from '../api/users';
-import { defaultQueryOptions } from '../config/queryClient';
+import { useUsersQuery } from '../queries/users';
 import type { User } from '../types/user';
 
 interface UseUsersReturn {
-  users: User[];
+  users: ReadonlyArray<User>;
   isLoading: boolean;
   isError: boolean;
   error: Error | null;
@@ -18,11 +16,7 @@ export function useUsers(): UseUsersReturn {
     isError,
     error,
     refetch,
-  } = useQuery<User[], Error>({
-    queryKey: ['users'],
-    queryFn: fetchUsers,
-    ...defaultQueryOptions,
-  });
+  } = useUsersQuery();
 
   return {
     users,

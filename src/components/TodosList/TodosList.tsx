@@ -1,3 +1,4 @@
+import * as RA from 'fp-ts/ReadonlyArray';
 import styles from './TodosList.module.css';
 import { EmptyState } from '../EmptyState/EmptyState';
 import type { Todo } from '../../types/todo';
@@ -7,7 +8,7 @@ import { TodoItems } from './TodoItems';
 import { TodoState } from './TodoState';
 
 interface TodoListProps {
-  todos: Todo[];
+  todos: ReadonlyArray<Todo>;
   onToggleTodo: (todo: Todo) => void;
 }
 
@@ -15,7 +16,7 @@ export function TodosList({ todos, onToggleTodo }: TodoListProps) {
   const { hideCompleted, filteredTodos, state, toggleHideCompleted } =
     useTodoFilter({ todos });
 
-  if (todos.length === 0) {
+  if (RA.size(todos) === 0) {
     return <EmptyState message="No Todos found for this user" />;
   }
 
